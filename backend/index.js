@@ -68,5 +68,22 @@ app.post("/api/userdetails",(req,res)=>{
 
 
 
+app.post('/api/login',(req,res)=>{
+    
+    const mail=req.body.Email;
+    const password=req.body.password;
+    console.log(mail);
+    console.log(password);
+    
+    const q='select * from user_details where `Email`= ? AND `password`= ?';
+    
+    db.query(q,[mail,password],(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data);
+    } );
+
+});
+
+
 app.listen(8888,()=>console.log('Listening on Port 8888'));
 

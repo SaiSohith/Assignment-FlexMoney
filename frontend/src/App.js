@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Add from './Components/Add'
 import Data from './Components/Data'
 import UserRegister from './Components/Authentication/UserRegister'
-
+import Login  from "./Components/Authentication/Login";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
           {/* <Route path="/" element={<Data />} />
           <Route path="/add" element={<Add />} /> */}
           <Route exact path='/userregister' element={<UserRegister/>}></Route>
+          <Route exact path='/login' element={<Login/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
