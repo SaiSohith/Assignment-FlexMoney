@@ -50,6 +50,23 @@ app.post("/api/book",(req,res)=>{
 });
 
 
+app.post("/api/userdetails",(req,res)=>{
+    const q="insert into user_details(`Email`,`Name`,`Age`,`phone_no`,`password`) values(?)"
+
+    const values=[
+        req.body.Email,
+        req.body.Name,
+        req.body.Age,   
+        req.body.phone_no,
+        req.body.password
+    ]
+    db.query(q,[values],(err,data)=>{
+        if(err) return res.json(err);
+        return res.json("booking done successfully");
+    });
+})
+
+
 
 app.listen(8888,()=>console.log('Listening on Port 8888'));
 

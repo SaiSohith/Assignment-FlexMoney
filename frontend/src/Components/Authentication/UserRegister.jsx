@@ -43,6 +43,14 @@ export default function UserRegister() {
 		const a3=ValidateAge();
 		const a4=ValidateUsername();
 		const a5=ValidateEmail();
+
+		console.log(a1);
+		console.log(a2);
+		console.log(a3);
+		console.log(a4);
+		console.log(a5);
+		
+
 		if(a1===true && a2===true && a3===true && a4===true && a5===true)
 		{
 			if(password === confirmpassword)
@@ -73,7 +81,7 @@ export default function UserRegister() {
 			"password": password
 		}
 		// PostUserDetails(obj)
-		axios.post(obj)
+		axios.post("http://localhost:8888/api/userdetails",obj)
 		.then((resp) => {
 			if(resp.data.status==="Error")
 			{
@@ -116,7 +124,7 @@ export default function UserRegister() {
 	}
 
 	const ValidateAge = () => {
-		if (age < 18 && age>65) {
+		if (age < 18 || age>65) {
 			// setmobileerror("Mobie Number must be 10 digits only.")
 			setAgeerror("Our Current Yoga Program is designed for the age group of 18 - 65. Keep Checking our site for suitable programmes in the future")
 			return false;
@@ -140,7 +148,7 @@ export default function UserRegister() {
 			if (pwddata[i] >= 'a' && pwddata[i] <= 'z') {
 				a2 = 1;
 			}
-			if (pwddata[i] >= '0' && pwddata[i] <= '1') {
+			if (pwddata[i] >= '0' && pwddata[i] <= '9') {
 				a3 = 1;
 			}
 		}
