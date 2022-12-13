@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import './userregister.css'
 import { Link } from 'react-router-dom';
-import { PostUserDetails } from '../../../Services/AuthenticateService';
-import HomeHeader from '../HomeHeader/HomeHeader';
+// import { PostUserDetails } from '../../../Services/AuthenticateService';
+// import HomeHeader from '../HomeHeader/HomeHeader';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function UserRegister() {
     const [username, setusername] = useState("")
 	const [email, setemail] = useState("")
 	const [mobile, setmobile] = useState("")
 	const [password, setpassword] = useState("")
-	const [address, setaddress] = useState("")
+	const [age, setAge] = useState("")
+	
+
 	const [confirmpassword, setconfirmpassword] = useState("")
 	const [usernameerror, setusernameerror] = useState("")
 	const [emailerror, setemailerror] = useState("")
 	const [mobileerror, setmobileerror] = useState("")
+	const [ageerror, setAgeerror] = useState("")
+	
+
 	const [passworderror, setpassworderror] = useState("")
-	const [addresserror, setaddresserror] = useState("")
 	const [confirmpassworderror, setconfirmpassworderror] = useState("")
 	const [Errormessage, setErrormessage] = useState("")
 	const [successmessage, setsuccessmessage] = useState("")
@@ -27,7 +32,7 @@ export default function UserRegister() {
 		setusername("")
 		setmobile("")
 		setpassword("")
-		setaddress("")
+		setAge("")
 		setemail("")
 		setconfirmpassword("")
 	}, [])
@@ -35,16 +40,16 @@ export default function UserRegister() {
 	const SignupHandler = () => {
 		const a1=ValidateMobile();
 		const a2=validatePassword();
-		const a3=ValidateAddress();
+		const a3=ValidateAge();
 		const a4=ValidateUsername();
 		const a5=ValidateEmail();
-		if(a1===true && a2===true && a3===true && a4===true && a5==true)
+		if(a1===true && a2===true && a3===true && a4===true && a5===true)
 		{
 			if(password === confirmpassword)
 			{
 				setmobileerror("")
 				setconfirmpassworderror("")
-				setaddresserror("")
+				setAgeerror("")
 				setpassworderror("")
 				AddUserToDB()
 			}
@@ -61,15 +66,16 @@ export default function UserRegister() {
 
 	const AddUserToDB = () => {
 		const obj = {
-			"username": username,
-			"email":email,
-			"mobile": mobile,
-			"address":address,
+			"Name": username,
+			"Email":email,
+			"phone_no": mobile,
+			"Age":age,
 			"password": password
 		}
-		PostUserDetails(obj)
+		// PostUserDetails(obj)
+		axios.post(obj)
 		.then((resp) => {
-			if(resp.data.status=="Error")
+			if(resp.data.status==="Error")
 			{
 				setErrormessage("Please give valid credentials")
 				setsuccessmessage("")
@@ -109,6 +115,17 @@ export default function UserRegister() {
 		return true;
 	}
 
+	const ValidateAge = () => {
+		if (age < 18 && age>65) {
+			// setmobileerror("Mobie Number must be 10 digits only.")
+			setAgeerror("Our Current Yoga Program is designed for the age group of 18 - 65. Keep Checking our site for suitable programmes in the future")
+			return false;
+		}
+		return true;
+	}
+
+
+
 	const validatePassword = () => {
 		let n = password.length, a1 = 0, a2 = 0, a3 = 0;
 		if (n < 8) {
@@ -134,17 +151,9 @@ export default function UserRegister() {
 		return true;
 	}
 
-	const ValidateAddress = () => {
-		if (address.length < 2) {
-			setaddresserror("Address must be atleast conatins 2 alphabets")
-			return false;
-		}
-		return true
-	}
-
 	return (
 		<div>
-			<HomeHeader />
+			{/* <HomeHeader /> */}
 			{
                 Errormessage ?
                     <div>
@@ -196,11 +205,11 @@ export default function UserRegister() {
                                     : ""}
 						</div>
 						<div className="form-group">
-							<textarea placeholder='Address ...' className="form-control" rows="3" value={address} onChange={(e) => { setaddress(e.target.value) }} required></textarea>
+							<input type="number" className="form-control" placeholder="Age" value={age} onChange={(e) => { setAge(e.target.value) }} required />
 							{
-                                addresserror ?
+                                ageerror ?
                                     <div>
-                                        <small style={{ color: 'red' }}>{addresserror}</small>
+                                        <small style={{ color: 'red' }}>{ageerror}</small>
                                     </div>
                                     : ""}
 						</div>
