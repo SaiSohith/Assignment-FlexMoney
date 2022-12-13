@@ -1,0 +1,65 @@
+.signupform
+{
+    font-family: "Roboto", sans-serif;
+    width: 450px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 15px;
+    padding-top: 20px;
+    margin-top: 5%;
+    border: 2px solid #000;
+}
+
+.heading {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.userlogo {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.main {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 50px;
+    padding-top: 15px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    height: 45px;
+}
+
+@media (max-width: 470px) {
+    .loginform {
+        width: 100%;
+    }
+    
+    .signupform {
+        width: 100%;
+    }
+}
+
+.btn {
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.already {
+    margin-top: 15px;
+}
+
+.anchor {
+    text-decoration: none;
+    color: blue;
+}

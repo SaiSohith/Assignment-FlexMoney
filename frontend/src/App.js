@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 // import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Add from './pages/Add'
-import Data from './pages/Data'
+import Add from './Components/Add'
+import Data from './Components/Data'
 
 
 function App() {
