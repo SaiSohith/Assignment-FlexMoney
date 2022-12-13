@@ -1,0 +1,38 @@
+.card
+{
+    width: 500px;
+    margin: auto;
+    margin-top: 75px;
+    padding: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+h3
+{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.form-group
+{
+    margin-bottom: 20px;
+}
+
+.form-control
+{
+    height: 45px;
+}
+
+button
+{
+    width: 100px;
+    text-align: center;
+}
+
+@media screen and ( max-width:451px ){
+    .card
+    {
+        width: 100%;
+    }
+}

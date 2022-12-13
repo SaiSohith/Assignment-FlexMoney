@@ -85,5 +85,6 @@ app.post('/api/login',(req,res)=>{
 });
 
 
-app.listen(8888,()=>console.log('Listening on Port 8888'));
+const PORT=8888
+app.listen(process.env.PORT||PORT,()=>console.log('Listening on Port 8888'));
 
